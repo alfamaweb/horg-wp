@@ -1,0 +1,83 @@
+/*
+ * Entrada do Tailwind v4 — compilada para assets/css/tailwind.css.
+ *
+ *   npm run dev    (watch)
+ *   npm run build  (minificado, para commit)
+ *
+ * Os breakpoints e a largura do .container reproduzem os do Bootstrap 5, que é
+ * a grade em que a equipe já pensa layout desde a v2. Manter esses números é
+ * uma decisão deliberada: o Bootstrap saiu, a grade dele ficou.
+ */
+
+@import "tailwindcss";
+
+@source "../**/*.php";
+
+@theme {
+  --breakpoint-sm: 576px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 992px;
+  --breakpoint-xl: 1200px;
+  --breakpoint-2xl: 1400px;
+  --breakpoint-3xl: 1800px;
+
+  /* Espelha os tokens de style.css, para usar as cores como utilitário
+     do Tailwind (text-tinta, border-linha…). */
+  --color-tinta: var(--aw-tinta);
+  --color-tinta-suave: var(--aw-tinta-suave);
+  --color-fundo-alt: var(--aw-fundo-alt);
+  --color-linha: var(--aw-linha);
+
+  /* Paleta de marca definida em assets/css/style.css (bg-azul, text-rosa…). */
+  --color-azul: var(--azul);
+  --color-azul-escuro: var(--azul-escuro);
+  --color-rosa: var(--rosa);
+  --color-cinza: var(--cinza);
+  --color-cinza-claro: var(--cinza-claro);
+  --color-laranja: var(--laranja);
+
+  /* drop-shadow-sombra-1/2/3 */
+  --drop-shadow-sombra-1: var(--sombra-1);
+  --drop-shadow-sombra-2: var(--sombra-2);
+  --drop-shadow-sombra-3: var(--sombra-3);
+
+  /* bg-degrade */
+  --background-image-degrade: var(--degrade);
+
+  --radius-aw: var(--aw-raio);
+  --font-sans: var(--aw-fonte);
+}
+
+/* @utility, não @layer components: o .container nativo do Tailwind vive em
+   @layer utilities, então uma regra customizada em @layer components perde
+   a disputa de camada mesmo declarada depois. @utility entra na mesma
+   camada do nativo e, por ordem de declaração, vence nos empates. */
+@utility container {
+  width: 100%;
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+
+  @media (width >= theme(--breakpoint-sm)) {
+    max-width: 540px;
+  }
+
+  @media (width >= theme(--breakpoint-md)) {
+    max-width: 720px;
+  }
+
+  @media (width >= theme(--breakpoint-lg)) {
+    max-width: 960px;
+  }
+
+  @media (width >= theme(--breakpoint-xl)) {
+    max-width: 1140px;
+  }
+
+  @media (width >= theme(--breakpoint-2xl)) {
+    max-width: 1320px;
+  }
+
+  @media (width >= theme(--breakpoint-3xl)) {
+    max-width: 1660px;
+  }
+}

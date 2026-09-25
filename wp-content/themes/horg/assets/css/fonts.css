@@ -1,0 +1,28 @@
+/* @font-face do projeto. Os arquivos vão em assets/fonts/.
+   Inter, hospedada localmente (v20, subconjunto latin — cobre acentuação
+   do português, U+0000-00FF). font-display: swap evita FOIT. */
+@layer base {
+@font-face {
+  font-family: "Inter";
+  src: url("../fonts/inter-v20-latin-400.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("../fonts/inter-v20-latin-500.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("../fonts/inter-v20-latin-700.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+} /* @layer base */

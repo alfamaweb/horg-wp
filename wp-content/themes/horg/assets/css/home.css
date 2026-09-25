@@ -1,0 +1,17 @@
+/* Home. Estilos específicos da página inicial. */
+
+@layer components {
+.depoimentos-swiper {
+	/* !important: o CSS do Swiper vem de CDN sem @layer (unlayered), então
+	   sempre vence uma regra em @layer components, não importa a ordem. */
+	.swiper-slide:not(.swiper-slide-active):not(.swiper-slide-next) {
+		opacity: 0 !important;
+		pointer-events: none !important;
+	}
+
+	.swiper-slide-active .card,
+	.swiper-slide-next .card {
+		filter: drop-shadow(var(--sombra-2));
+	}
+}
+} /* @layer components */

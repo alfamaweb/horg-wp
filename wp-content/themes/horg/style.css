@@ -1,0 +1,251 @@
+/*
+Theme Name: Alfama WEB v3
+Theme URI: https://alfamaweb.com.br/
+Author: Alfama Web
+Author URI: https://alfamaweb.com.br/
+Description: Starter theme da Alfamaweb. Sucessor do "None Plate" / Alfama WEB v2, reescrito sem a herança do Twenty Sixteen e sem as dívidas técnicas que se replicavam por cópia entre projetos. Ver README.md e docs/.
+Version: 3.0.0
+Requires at least: 6.4
+Tested up to: 6.7
+Requires PHP: 8.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: alfama-web
+Tags: custom-menu, featured-images, translation-ready
+*/
+
+/* Ordem de cascata declarada antes do Tailwind entrar (assets/css/tailwind.css
+   repete a mesma linha; ser idempotente remove a ambiguidade sobre qual
+   arquivo estabelece a ordem, já que este carrega primeiro). */
+@layer theme, base, components, utilities;
+
+/* ==========================================================================
+   Sumário
+   ==========================================================================
+   1. Tokens de design
+   2. Reset e base
+   3. Acessibilidade
+   4. Tipografia de conteúdo
+   ========================================================================== */
+
+/* ==========================================================================
+   1. Tokens de design
+   --------------------------------------------------------------------------
+   Único lugar a editar para trocar a identidade do projeto. Os componentes em
+   assets/css/style.css consomem só estes tokens — nunca um hex literal.
+   ========================================================================== */
+@layer theme {
+:root {
+  /* Cor primária e de destaque: ver --azul* / --rosa / --cinza / --laranja
+     em assets/css/style.css — a paleta de marca da Horg. */
+  --aw-tinta: #1f2933;
+  --aw-tinta-suave: #52606d;
+  --aw-tinta-fraca: #7b8794;
+
+  --aw-fundo: #ffffff;
+  --aw-fundo-alt: #f4f5f7;
+  --aw-linha: #e3e6ec;
+
+  --aw-sucesso: #2a6a53;
+  --aw-atencao: #8d6216;
+  --aw-erro: #c0342c;
+
+  /* Webfont do projeto: @font-face em assets/css/fonts.css. */
+  --aw-fonte: "Inter", system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+  --aw-fonte-titulo: var(--aw-fonte);
+
+  /* Espaço e forma */
+  --aw-raio: 8px;
+  --aw-raio-sm: 4px;
+  --aw-sombra: 0 1px 2px rgb(31 41 51 / 6%), 0 12px 32px -20px rgb(31 41 51 / 24%);
+  --aw-transicao: 180ms ease;
+
+  /* Altura do header fixo, usada por scroll-padding e pelo menu mobile */
+  --aw-header-altura: 72px;
+}
+} /* @layer theme */
+
+/* ==========================================================================
+   2. Reset e base
+   ========================================================================== */
+@layer base {
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--aw-header-altura);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--aw-fundo);
+  color: var(--aw-tinta);
+  font-family: var(--aw-fonte);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  font-family: var(--aw-fonte-titulo);
+  line-height: 1.15;
+  text-wrap: balance;
+}
+
+p, ul, ol, figure, blockquote {
+  margin: 0;
+  padding: 0;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+img, svg, video, iframe {
+  display: block;
+  max-width: 100%;
+}
+
+img {
+  height: auto;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+input, select, textarea {
+  font: inherit;
+  color: inherit;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+/* ==========================================================================
+   3. Acessibilidade
+   ========================================================================== */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.aw-skip-link {
+  position: absolute;
+  left: 8px;
+  top: -60px;
+  z-index: 999;
+  padding: 10px 16px;
+  background: var(--azul-escuro);
+  color: #fff;
+  border-radius: var(--aw-raio-sm);
+  transition: top var(--aw-transicao);
+}
+
+.aw-skip-link:focus {
+  top: 8px;
+}
+
+:where(a, button, input, select, textarea, [tabindex]):focus-visible {
+  outline: 2px solid var(--azul);
+  outline-offset: 2px;
+}
+
+/* Honeypot do dispatcher de formulários — invisível, mas não display:none,
+   para que bots que checam visibilidade ainda o preencham. */
+.aw-hp {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ==========================================================================
+   4. Tipografia de conteúdo (saída do editor)
+   ========================================================================== */
+.aw-prose > * + * {
+  margin-top: 1em;
+}
+
+.aw-prose h2 {
+  margin-top: 1.8em;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.aw-prose h3 {
+  margin-top: 1.5em;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.aw-prose ul,
+.aw-prose ol {
+  padding-left: 1.25em;
+  list-style: revert;
+}
+
+.aw-prose li + li {
+  margin-top: 0.4em;
+}
+
+.aw-prose a {
+  color: var(--azul);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.aw-prose img {
+  border-radius: var(--aw-raio);
+}
+
+.aw-prose blockquote {
+  padding-left: 1em;
+  border-left: 3px solid var(--azul);
+  color: var(--aw-tinta-suave);
+  font-style: italic;
+}
+
+.aw-prose-invertido,
+.aw-prose-invertido * {
+  color: #fff;
+}
+} /* @layer base */
