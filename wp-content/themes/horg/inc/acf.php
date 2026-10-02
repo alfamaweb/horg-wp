@@ -43,6 +43,22 @@ function aw_acf_load_json($paths)
 }
 
 /**
+ * Regra de localização por slug de página (ver inc/ACF/).
+ *
+ * @return void
+ */
+add_action('acf/init', 'aw_acf_registrar_localizacoes');
+function aw_acf_registrar_localizacoes()
+{
+	if (!function_exists('acf_register_location_type') || !class_exists('ACF_Location')) {
+		return;
+	}
+
+	require_once AW_DIR . '/inc/ACF/class-aw-acf-location-page-slug.php';
+	acf_register_location_type('AW_ACF_Location_Page_Slug');
+}
+
+/**
  * Página "Opções do Site" — header, footer, redes, contatos e integrações.
  *
  * @return void

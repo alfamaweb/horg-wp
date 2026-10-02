@@ -16,6 +16,21 @@ $endereco = aw_field('endereco', 'option', '');
 $tagline = aw_field('tagline', 'option', '');
 $copyright = aw_field('copyright', 'option', sprintf(__('Todos os direitos reservados à %s', 'alfama-web'), get_bloginfo('name')));
 $certs = aw_field('certificacoes', 'option', array());
+
+// WhatsApp exibido no formato (79) 98828-7291 a partir do número só com dígitos.
+$whatsapp_digitos  = preg_replace('/\D/', '', (string) aw_field('whatsapp_numero', 'option', ''));
+$whatsapp_local    = preg_replace('/^55/', '', $whatsapp_digitos);
+$whatsapp_exibicao = strlen($whatsapp_local) >= 10
+	? sprintf('(%s) %s-%s', substr($whatsapp_local, 0, 2), substr($whatsapp_local, 2, -4), substr($whatsapp_local, -4))
+	: $whatsapp_digitos;
+
+$links_rapidos = array(
+	'sobre'     => __('Sobre a Horg', 'alfama-web'),
+	'consultas' => __('Consultas', 'alfama-web'),
+	'servicos'  => __('Serviços', 'alfama-web'),
+	'artigos'   => __('Artigos', 'alfama-web'),
+	'contato'   => __('Contato', 'alfama-web'),
+);
 ?>
 <footer class="site-footer bg-azul">
 	<div class="container py-12 lg:py-16">
@@ -51,7 +66,7 @@ $certs = aw_field('certificacoes', 'option', array());
 					&nbsp;
 					ENDEREÇO
 				</h3>
-				<p class="mt-8 max-w-xs text-md"><?php echo esc_html($endereco); ?>
+				<p class="mt-8 max-w-xs text-md"><?php echo nl2br(esc_html($endereco)); ?>
 				</p>
 			</div>
 			<div class="text-center lg:col-span-3 lg:text-left">
@@ -64,7 +79,13 @@ $certs = aw_field('certificacoes', 'option', array());
 					&nbsp;
 					TELEFONES
 				</h3>
-				<p class="mt-8 max-w-xs text-md"><?php echo esc_html($endereco); ?>
+				<p class="mt-8 max-w-xs text-md">
+					<?php if ($telefone): ?>
+						<?php esc_html_e('Atendimento:', 'alfama-web'); ?> <?php echo esc_html($telefone); ?><br>
+					<?php endif; ?>
+					<?php if ($whatsapp_exibicao): ?>
+						<?php esc_html_e('Whatsapp:', 'alfama-web'); ?> <a href="<?php echo esc_url(aw_whatsapp_url('link')); ?>" target="_blank" rel="noopener"><?php echo esc_html($whatsapp_exibicao); ?></a>
+					<?php endif; ?>
 				</p>
 			</div>
 			<div class="text-center lg:col-span-3 lg:text-left">
@@ -85,11 +106,10 @@ $certs = aw_field('certificacoes', 'option', array());
 					LINKS RÁPIDOS
 				</h3>
 				<div class="flex flex-wrap justify-between gap-6 gap-y-3 max-w-3/4 mt-8">
-					<a class="flex-[1_1_auto] underline" href="">Sobre a Horg</a>
-					<a class="flex-[1_1_auto] underline" href="">Consultas</a>
-					<a class="flex-[1_1_auto] underline" href="">Serviços</a>
-					<a class="flex-[1_1_auto] underline" href="">Artigos</a>
-					<a class="flex-[1_1_auto] underline" href="">Contato</a>
+					<?php foreach ($links_rapidos as $slug_link => $rotulo_link):
+						$pagina_link = get_page_by_path($slug_link); ?>
+						<a class="flex-[1_1_auto] underline" href="<?php echo esc_url($pagina_link ? get_permalink($pagina_link) : home_url('/' . $slug_link . '/')); ?>"><?php echo esc_html($rotulo_link); ?></a>
+					<?php endforeach; ?>
 				</div>
 			</div>
 		</div>

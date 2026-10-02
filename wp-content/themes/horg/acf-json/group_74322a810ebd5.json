@@ -167,6 +167,13 @@
     "location": [
         [
             {
+                "param": "aw_page_slug",
+                "operator": "==",
+                "value": "contato"
+            }
+        ],
+        [
+            {
                 "param": "page_template",
                 "operator": "==",
                 "value": "page-contato.php"
@@ -187,5 +194,5 @@
     "display_title": "Conteúdo - Contato",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1790951597
+    "modified": 1790968082
 }

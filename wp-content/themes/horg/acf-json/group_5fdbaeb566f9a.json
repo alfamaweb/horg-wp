@@ -114,14 +114,19 @@
                 "value": "default"
             },
             {
-                "param": "page",
+                "param": "aw_page_slug",
                 "operator": "!=",
-                "value": "16"
+                "value": "artigos"
             },
             {
-                "param": "page",
+                "param": "aw_page_slug",
                 "operator": "!=",
-                "value": "3"
+                "value": "contato"
+            },
+            {
+                "param": "aw_page_slug",
+                "operator": "!=",
+                "value": "politica-de-privacidade"
             }
         ],
         [
@@ -146,5 +151,5 @@
     "display_title": "Conteúdo - Faixa CTA",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1790951597
+    "modified": 1790968082
 }

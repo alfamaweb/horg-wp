@@ -434,9 +434,9 @@
     "location": [
         [
             {
-                "param": "page",
+                "param": "aw_page_slug",
                 "operator": "==",
-                "value": "12"
+                "value": "sobre"
             }
         ]
     ],
@@ -454,5 +454,5 @@
     "display_title": "Conteúdo - Sobre",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1790951597
+    "modified": 1790968082
 }
