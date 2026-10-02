@@ -4,7 +4,7 @@
     "fields": [
         {
             "key": "field_a3c28563062dc",
-            "label": "Aba Sobre",
+            "label": "Aba Exames",
             "name": "",
             "aria-label": "",
             "type": "tab",
@@ -23,7 +23,7 @@
         {
             "key": "field_67074b37b5204",
             "label": "Eyebrow",
-            "name": "sobre_eyebrow",
+            "name": "exames_eyebrow",
             "aria-label": "",
             "type": "text",
             "instructions": "",
@@ -34,7 +34,7 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": "agendamento fácil e rápido",
+            "default_value": "exames e diagnósticos",
             "maxlength": "",
             "allow_in_bindings": 0,
             "placeholder": "",
@@ -44,7 +44,7 @@
         {
             "key": "field_da8f8ba13c566",
             "label": "Título",
-            "name": "sobre_titulo",
+            "name": "exames_titulo",
             "aria-label": "",
             "type": "text",
             "instructions": "",
@@ -55,7 +55,7 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": "A Horg está esperando por você!",
+            "default_value": "Cuidando da Sua Visão com Precisão",
             "maxlength": "",
             "allow_in_bindings": 0,
             "placeholder": "",
@@ -63,9 +63,30 @@
             "append": ""
         },
         {
+            "key": "field_af24b49902b77",
+            "label": "Texto",
+            "name": "exames_texto",
+            "aria-label": "",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "allow_in_bindings": 0,
+            "tabs": "all",
+            "toolbar": "basic",
+            "media_upload": 0,
+            "delay": 0
+        },
+        {
             "key": "field_dc598a80e9652",
             "label": "Imagem",
-            "name": "sobre_imagem",
+            "name": "exames_imagem",
             "aria-label": "",
             "type": "image",
             "instructions": "",
@@ -90,7 +111,7 @@
         },
         {
             "key": "field_a2ba784111cb8",
-            "label": "Aba Equipe",
+            "label": "Aba Tratamentos",
             "name": "",
             "aria-label": "",
             "type": "tab",
@@ -107,9 +128,51 @@
             "selected": 0
         },
         {
+            "key": "field_f669e6124898b",
+            "label": "Eyebrow",
+            "name": "tratamentos_eyebrow",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "tratamentos e intervenções",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_2c54216e0a077",
+            "label": "Título",
+            "name": "tratamentos_titulo",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Conheça algumas das principais opções disponíveis",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
             "key": "field_d89a04a1f92f5",
-            "label": "Membros",
-            "name": "equipe",
+            "label": "Tratamentos",
+            "name": "tratamentos",
             "aria-label": "",
             "type": "repeater",
             "instructions": "",
@@ -125,9 +188,36 @@
             "min": 0,
             "max": 0,
             "collapsed": "field_04f49297bec7b",
-            "button_label": "Adicionar membro",
+            "button_label": "Adicionar tratamento",
             "rows_per_page": 20,
             "sub_fields": [
+                {
+                    "key": "field_6263139092052",
+                    "label": "Ícone",
+                    "name": "icone",
+                    "aria-label": "",
+                    "type": "image",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "library": "all",
+                    "min_width": "",
+                    "min_height": "",
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": "svg,png,webp",
+                    "allow_in_bindings": 0,
+                    "preview_size": "medium",
+                    "parent_repeater": "field_d89a04a1f92f5"
+                },
                 {
                     "key": "field_04f49297bec7b",
                     "label": "Título",
@@ -155,7 +245,7 @@
                     "label": "Texto",
                     "name": "texto",
                     "aria-label": "",
-                    "type": "text",
+                    "type": "textarea",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
@@ -168,15 +258,32 @@
                     "maxlength": "",
                     "allow_in_bindings": 0,
                     "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "parent_repeater": "field_d89a04a1f92f5"
+                    "parent_repeater": "field_d89a04a1f92f5",
+                    "rows": 3,
+                    "new_lines": "br"
                 }
             ]
         },
         {
+            "key": "field_95432c639ef5b",
+            "label": "Botão",
+            "name": "tratamentos_botao",
+            "aria-label": "",
+            "type": "link",
+            "instructions": "Vazio usa o link de agendamento das Opções do Site.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "allow_in_bindings": 0
+        },
+        {
             "key": "field_1e411622ba2cd",
-            "label": "Aba Agendamento",
+            "label": "Aba Cirurgias",
             "name": "",
             "aria-label": "",
             "type": "tab",
@@ -195,7 +302,7 @@
         {
             "key": "field_540e278b4c732",
             "label": "Eyebrow",
-            "name": "agendamento_eyebrow",
+            "name": "cirurgias_eyebrow",
             "aria-label": "",
             "type": "text",
             "instructions": "",
@@ -206,7 +313,7 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": "agendamento fácil e rápido",
+            "default_value": "CIRURGIAS DISPONÍVEIS",
             "maxlength": "",
             "allow_in_bindings": 0,
             "placeholder": "",
@@ -216,7 +323,7 @@
         {
             "key": "field_0fbf55c744a2c",
             "label": "Título",
-            "name": "agendamento_titulo",
+            "name": "cirurgias_titulo",
             "aria-label": "",
             "type": "text",
             "instructions": "",
@@ -227,7 +334,7 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": "A Horg está esperando por você!",
+            "default_value": "Seu procedimento com mais segurança",
             "maxlength": "",
             "allow_in_bindings": 0,
             "placeholder": "",
@@ -235,9 +342,30 @@
             "append": ""
         },
         {
+            "key": "field_11d6fe8de3dae",
+            "label": "Texto",
+            "name": "cirurgias_texto",
+            "aria-label": "",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "allow_in_bindings": 0,
+            "tabs": "all",
+            "toolbar": "basic",
+            "media_upload": 0,
+            "delay": 0
+        },
+        {
             "key": "field_607d9f08733d6",
             "label": "Imagem",
-            "name": "agendamento_imagem",
+            "name": "cirurgias_imagem",
             "aria-label": "",
             "type": "image",
             "instructions": "",
@@ -353,9 +481,9 @@
     "location": [
         [
             {
-                "param": "page_template",
+                "param": "page",
                 "operator": "==",
-                "value": "page-servicos.php"
+                "value": "24"
             }
         ]
     ],
@@ -373,5 +501,5 @@
     "display_title": "Conteúdo - Serviços",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1790623380
+    "modified": 1790951597
 }

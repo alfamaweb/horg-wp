@@ -104,6 +104,16 @@ function aw_acf_grupos_locais()
 				'instructions' => __('Destinatário dos formulários do site. Vazio usa o e-mail do administrador.', 'alfama-web')),
 			array('key' => 'field_aw_endereco', 'label' => __('Endereço', 'alfama-web'), 'name' => 'endereco', 'type' => 'textarea', 'rows' => 3),
 
+			array('key' => 'field_aw_tab_agendamento', 'label' => __('Agendamento', 'alfama-web'), 'type' => 'tab'),
+			array(
+				'key'           => 'field_aw_agendamento_link',
+				'label'         => __('Link de agendamento', 'alfama-web'),
+				'name'          => 'agendamento_link',
+				'type'          => 'link',
+				'return_format' => 'array',
+				'instructions'  => __('Destino padrão de todos os botões "Agende sua consulta" (header, CTA, seções). Vazio aponta para a página de Contato.', 'alfama-web'),
+			),
+
 			array('key' => 'field_aw_tab_redes', 'label' => __('Redes sociais', 'alfama-web'), 'type' => 'tab'),
 			array(
 				'key'          => 'field_aw_redes',

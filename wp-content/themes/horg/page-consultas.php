@@ -12,66 +12,55 @@ get_header();
 <main id="conteudo">
 	<?php get_template_part('template-parts/breadcrumb'); ?>
 
-	<section id="equipamentos">
+	<section id="consultas">
 		<div class="container">
 			<div class="grid grid-cols-12 gap-8">
-				<?php $equipamentos_imagem = get_field('equipamentos_imagem'); ?>
+				<?php $consultas_imagem = get_field('consultas_imagem'); ?>
 				<div class="col-span-12 lg:col-span-6">
 					<div class="relative isolate h-full pt-6 pl-6 lg:pt-11 lg:pl-10">
 						<div class="absolute bg-degrade left-0 top-0 w-1/2 h-2/3 rounded-[15px] -z-1" aria-hidden="true"></div>
-						<img src="<?php echo esc_url($equipamentos_imagem['url'] ?? 'https://placehold.co/775x398'); ?>"
-							alt="<?php echo esc_attr($equipamentos_imagem['alt'] ?? 'Sobre a Horg'); ?>" class="w-full h-full object-cover rounded-[15px]">
+						<img src="<?php echo esc_url($consultas_imagem['url'] ?? 'https://placehold.co/775x390'); ?>"
+							alt="<?php echo esc_attr($consultas_imagem['alt'] ?? 'Consultas na Horg'); ?>" class="w-full h-full object-cover rounded-[15px]">
 					</div>
 				</div>
 				<div class="col-span-12 lg:col-span-6">
 					<div class="section-title items-start">
-						<div class="eyebrow mb-3 lg:mb-4"><?php echo esc_html(get_field('equipamentos_eyebrow') ?: 'agendamento fácil e rápido'); ?></div>
-						<h2><?php echo esc_html(get_field('equipamentos_titulo') ?: 'A Horg está esperando por você!'); ?></h2>
+						<div class="eyebrow mb-3 lg:mb-4"><?php echo esc_html(get_field('consultas_eyebrow') ?: 'consultas e atendimentos'); ?></div>
+						<h2><?php echo esc_html(get_field('consultas_titulo') ?: 'Prevenção e cuidados para a saúde ocular'); ?></h2>
 						<div class="line max-w-[200px]"></div>
 					</div>
+					<?php if ($consultas_texto = get_field('consultas_texto')): ?>
+						<div class="aw-prose mt-8"><?php echo wp_kses_post($consultas_texto); ?></div>
+					<?php endif; ?>
 				</div>
 			</div>
 		</div>
 	</section>
 
-	<section class="bg-azul py-12 lg:py-18" id="diferenciais">
-		<div class="container">
-			<div class="grid grid-cols-12 gap-8">
-				<div class="col-span-12 md:col-span-6 xl:col-span-3">
-					<div class="dif-item flex flex-row items-center gap-6">
-						<div class="img-holder rounded-[5px] bg-white p-4">
-							<img class="w-10 h-10" src="" alt="">
+	<?php if (have_rows('beneficios')): ?>
+		<section class="bg-azul py-12 lg:py-18" id="beneficios">
+			<div class="container">
+				<div class="grid grid-cols-12 gap-8">
+					<?php while (have_rows('beneficios')): the_row();
+						$beneficio_icone = get_sub_field('icone');
+						$beneficio_texto = get_sub_field('texto');
+						?>
+						<div class="col-span-12 md:col-span-6 xl:col-span-3">
+							<div class="dif-item flex flex-row items-center gap-6">
+								<?php if (!empty($beneficio_icone['url'])): ?>
+									<div class="img-holder rounded-[5px] bg-white p-4 shrink-0">
+										<img class="w-10 h-10 object-contain" src="<?php echo esc_url($beneficio_icone['url']); ?>"
+											alt="<?php echo esc_attr($beneficio_icone['alt'] ?? ''); ?>">
+									</div>
+								<?php endif; ?>
+								<h4 class="text-white"><?php echo esc_html($beneficio_texto); ?></h4>
+							</div>
 						</div>
-						<h4 class="text-white">Atendimento humanizado e gentil</h4>
-					</div>
-				</div>
-				<div class="col-span-12 md:col-span-6 xl:col-span-3">
-					<div class="dif-item flex flex-row items-center gap-6">
-						<div class="img-holder rounded-[5px] bg-white p-4">
-							<img class="w-10 h-10" src="" alt="">
-						</div>
-						<h4 class="text-white">Atendimento humanizado e gentil</h4>
-					</div>
-				</div>
-				<div class="col-span-12 md:col-span-6 xl:col-span-3">
-					<div class="dif-item flex flex-row items-center gap-6">
-						<div class="img-holder rounded-[5px] bg-white p-4">
-							<img class="w-10 h-10" src="" alt="">
-						</div>
-						<h4 class="text-white">Atendimento humanizado e gentil</h4>
-					</div>
-				</div>
-				<div class="col-span-12 md:col-span-6 xl:col-span-3">
-					<div class="dif-item flex flex-row items-center gap-6">
-						<div class="img-holder rounded-[5px] bg-white p-4">
-							<img class="w-10 h-10" src="" alt="">
-						</div>
-						<h4 class="text-white">Atendimento humanizado e gentil</h4>
-					</div>
+					<?php endwhile; ?>
 				</div>
 			</div>
-		</div>
-	</section>
+		</section>
+	<?php endif; ?>
 
 	<section id="convenios">
 		<div class="container">

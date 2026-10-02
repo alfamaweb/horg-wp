@@ -25,6 +25,46 @@ $artigos_query = $artigos->query();
 <main id="conteudo">
 	<?php get_template_part('template-parts/breadcrumb'); ?>
 
+	<?php
+	$destaque_id = (int) get_field('destaque_post');
+
+	if (!$destaque_id) {
+		$mais_recente = get_posts(array(
+			'post_type'      => 'post',
+			'post_status'    => 'publish',
+			'posts_per_page' => 1,
+			'fields'         => 'ids',
+		));
+		$destaque_id  = $mais_recente ? (int) $mais_recente[0] : 0;
+	}
+	?>
+	<?php if ($destaque_id && 1 === $pagina_atual) : ?>
+		<section id="destaque">
+			<div class="container">
+				<div class="grid grid-cols-12 gap-8">
+					<div class="col-span-12 lg:col-span-6 content-center">
+						<div class="section-title items-start">
+							<div class="eyebrow mb-3 lg:mb-4"><?php echo esc_html(get_field('destaque_eyebrow') ?: 'notícia destaque'); ?></div>
+							<h2><?php echo esc_html(get_the_title($destaque_id)); ?></h2>
+							<div class="line max-w-[200px]"></div>
+						</div>
+						<p class="mt-8 text-cinza"><?php echo esc_html(aw_resumo($destaque_id, 320)); ?></p>
+						<a href="<?php echo esc_url(get_permalink($destaque_id)); ?>" class="btn escuro mt-10">
+							<?php esc_html_e('Ler artigo completo', 'alfama-web'); ?>
+						</a>
+					</div>
+					<div class="col-span-12 lg:col-span-6">
+						<div class="relative isolate h-full pl-6 lg:pl-10">
+							<div class="absolute bg-degrade left-0 top-[18%] w-[35%] h-[64%] rounded-l-[20px] -z-1" aria-hidden="true"></div>
+							<img src="<?php echo esc_url(aw_thumb($destaque_id, 'large')); ?>"
+								alt="<?php echo esc_attr(get_the_title($destaque_id)); ?>" class="w-full h-full object-cover rounded-[15px]">
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	<?php endif; ?>
+
 	<section id="artigos">
 		<div class="container">
 			<div class="section-title">

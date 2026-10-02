@@ -343,7 +343,7 @@
             "name": "servicos",
             "aria-label": "",
             "type": "post_object",
-            "instructions": "",
+            "instructions": "Opcional. Escolha e ordene os serviços exibidos na Home; vazio mostra os 4 primeiros pela ordem do menu.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -453,6 +453,41 @@
             "preview_size": "medium"
         },
         {
+            "key": "field_a5057cf006041",
+            "label": "Vídeo",
+            "name": "atendimento_video",
+            "aria-label": "",
+            "type": "url",
+            "instructions": "Link do YouTube ou Vimeo. Vazio esconde o botão de play.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "allow_in_bindings": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_b0fb727d0bf20",
+            "label": "Botão",
+            "name": "atendimento_botao",
+            "aria-label": "",
+            "type": "link",
+            "instructions": "Vazio usa o link de agendamento das Opções do Site.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "allow_in_bindings": 0
+        },
+        {
             "key": "field_b9438cda329e0",
             "label": "Aba Bem-vindo",
             "name": "",
@@ -560,6 +595,23 @@
             "new_lines": "wpautop"
         },
         {
+            "key": "field_0d6463b28796b",
+            "label": "Botão",
+            "name": "welcome_botao",
+            "aria-label": "",
+            "type": "link",
+            "instructions": "Vazio aponta para a página Sobre.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "allow_in_bindings": 0
+        },
+        {
             "key": "field_55b3a543beb24",
             "label": "Aba Depoimentos",
             "name": "",
@@ -664,11 +716,33 @@
             "sub_fields": [
                 {
                     "key": "field_f83a28b77b5df",
-                    "label": "Título",
+                    "label": "Nome",
                     "name": "titulo",
                     "aria-label": "",
                     "type": "text",
                     "instructions": "Nome do paciente",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_9a904b6219c9d"
+                },
+                {
+                    "key": "field_574d535ade46e",
+                    "label": "Subtítulo",
+                    "name": "subtitulo",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Ex.: Paciente do Dr. Matheus Barreto",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -704,6 +778,30 @@
                     "placeholder": "",
                     "rows": "",
                     "new_lines": "wpautop",
+                    "parent_repeater": "field_9a904b6219c9d"
+                },
+                {
+                    "key": "field_7bd9d206752e6",
+                    "label": "Nota (estrelas)",
+                    "name": "nota",
+                    "aria-label": "",
+                    "type": "number",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": 5,
+                    "min": 1,
+                    "max": 5,
+                    "step": 1,
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
                     "parent_repeater": "field_9a904b6219c9d"
                 }
             ]
@@ -792,5 +890,5 @@
     "display_title": "Conteúdo - Home",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1790623380
+    "modified": 1790951597
 }

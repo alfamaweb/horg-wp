@@ -34,7 +34,7 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": "agendamento fácil e rápido",
+            "default_value": "sobre nós",
             "maxlength": "",
             "allow_in_bindings": 0,
             "placeholder": "",
@@ -55,12 +55,33 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": "A Horg está esperando por você!",
+            "default_value": "O Hospital de Olhos Rollemberg Gois",
             "maxlength": "",
             "allow_in_bindings": 0,
             "placeholder": "",
             "prepend": "",
             "append": ""
+        },
+        {
+            "key": "field_1cf08ccf35c61",
+            "label": "Texto",
+            "name": "sobre_texto",
+            "aria-label": "",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "allow_in_bindings": 0,
+            "tabs": "all",
+            "toolbar": "basic",
+            "media_upload": 0,
+            "delay": 0
         },
         {
             "key": "field_2cbaea569911d",
@@ -304,7 +325,7 @@
         },
         {
             "key": "field_3e1f268d485e5",
-            "label": "Aba Agendamento",
+            "label": "Aba Equipamentos",
             "name": "",
             "aria-label": "",
             "type": "tab",
@@ -323,7 +344,7 @@
         {
             "key": "field_8ae4e90b09ec4",
             "label": "Eyebrow",
-            "name": "agendamento_eyebrow",
+            "name": "equipamentos_eyebrow",
             "aria-label": "",
             "type": "text",
             "instructions": "",
@@ -334,7 +355,7 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": "agendamento fácil e rápido",
+            "default_value": "Equipamentos e tecnologia",
             "maxlength": "",
             "allow_in_bindings": 0,
             "placeholder": "",
@@ -344,7 +365,7 @@
         {
             "key": "field_b09f5d92e2714",
             "label": "Título",
-            "name": "agendamento_titulo",
+            "name": "equipamentos_titulo",
             "aria-label": "",
             "type": "text",
             "instructions": "",
@@ -355,7 +376,7 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": "A Horg está esperando por você!",
+            "default_value": "Referência em Oftalmologia",
             "maxlength": "",
             "allow_in_bindings": 0,
             "placeholder": "",
@@ -363,9 +384,30 @@
             "append": ""
         },
         {
+            "key": "field_ca8adff3b1266",
+            "label": "Texto",
+            "name": "equipamentos_texto",
+            "aria-label": "",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "allow_in_bindings": 0,
+            "tabs": "all",
+            "toolbar": "basic",
+            "media_upload": 0,
+            "delay": 0
+        },
+        {
             "key": "field_21aea38873e6c",
             "label": "Imagem",
-            "name": "agendamento_imagem",
+            "name": "equipamentos_imagem",
             "aria-label": "",
             "type": "image",
             "instructions": "",
@@ -412,5 +454,5 @@
     "display_title": "Conteúdo - Sobre",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1790623380
+    "modified": 1790951597
 }

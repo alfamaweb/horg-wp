@@ -221,3 +221,62 @@ function aw_video_data($url)
 
 	return null;
 }
+
+/**
+ * Link de agendamento padrão do site (Opções do Site → Agendamento).
+ *
+ * Vazio cai para a página de contato, para nenhum "Agende sua consulta"
+ * ficar apontando para "#".
+ *
+ * @return array{url:string,title:string,target:string}
+ */
+function aw_link_agendamento()
+{
+	$link = aw_field('agendamento_link', 'option', array());
+
+	if (is_array($link) && !empty($link['url'])) {
+		return array(
+			'url'    => $link['url'],
+			'title'  => $link['title'] ?? '',
+			'target' => $link['target'] ?? '',
+		);
+	}
+
+	$contato = get_page_by_path('contato');
+
+	return array(
+		'url'    => $contato ? get_permalink($contato) : home_url('/contato'),
+		'title'  => '',
+		'target' => '',
+	);
+}
+
+/**
+ * Imprime um botão a partir de um campo Link do ACF.
+ *
+ * O rótulo e o destino vêm do campo; o que estiver vazio cai para os
+ * padrões informados (por padrão, o link de agendamento do site).
+ *
+ * @param array|string $link     Valor de um campo do tipo Link (return array).
+ * @param string       $rotulo   Rótulo padrão, usado quando o campo não tem título.
+ * @param string       $classes  Classes do <a>.
+ * @param array|null   $padrao   Link padrão no formato de aw_link_agendamento().
+ * @return void
+ */
+function aw_botao($link, $rotulo, $classes = 'btn', $padrao = null)
+{
+	$padrao = $padrao ?: aw_link_agendamento();
+	$link   = is_array($link) ? $link : array();
+
+	$url    = !empty($link['url']) ? $link['url'] : $padrao['url'];
+	$titulo = !empty($link['title']) ? $link['title'] : (!empty($padrao['title']) ? $padrao['title'] : $rotulo);
+	$target = !empty($link['url']) ? ($link['target'] ?? '') : ($padrao['target'] ?? '');
+
+	printf(
+		'<a href="%1$s" class="%2$s"%3$s>%4$s</a>',
+		esc_url($url),
+		esc_attr($classes),
+		$target ? ' target="' . esc_attr($target) . '" rel="noopener"' : '',
+		esc_html($titulo)
+	);
+}

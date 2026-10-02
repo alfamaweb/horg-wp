@@ -4,7 +4,7 @@
     "fields": [
         {
             "key": "field_5eca01898d838",
-            "label": "Aba Equipamentos",
+            "label": "Aba Consultas",
             "name": "",
             "aria-label": "",
             "type": "tab",
@@ -23,7 +23,7 @@
         {
             "key": "field_becbf7e39345b",
             "label": "Eyebrow",
-            "name": "equipamentos_eyebrow",
+            "name": "consultas_eyebrow",
             "aria-label": "",
             "type": "text",
             "instructions": "",
@@ -34,7 +34,7 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": "agendamento fácil e rápido",
+            "default_value": "consultas e atendimentos",
             "maxlength": "",
             "allow_in_bindings": 0,
             "placeholder": "",
@@ -44,7 +44,7 @@
         {
             "key": "field_698ecea47e8fe",
             "label": "Título",
-            "name": "equipamentos_titulo",
+            "name": "consultas_titulo",
             "aria-label": "",
             "type": "text",
             "instructions": "",
@@ -55,7 +55,7 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": "A Horg está esperando por você!",
+            "default_value": "Prevenção e cuidados para a saúde ocular",
             "maxlength": "",
             "allow_in_bindings": 0,
             "placeholder": "",
@@ -63,9 +63,30 @@
             "append": ""
         },
         {
+            "key": "field_c6a6ca17c3843",
+            "label": "Texto",
+            "name": "consultas_texto",
+            "aria-label": "",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "allow_in_bindings": 0,
+            "tabs": "all",
+            "toolbar": "basic",
+            "media_upload": 0,
+            "delay": 0
+        },
+        {
             "key": "field_9120bfb0bfe1a",
             "label": "Imagem",
-            "name": "equipamentos_imagem",
+            "name": "consultas_imagem",
             "aria-label": "",
             "type": "image",
             "instructions": "",
@@ -87,6 +108,98 @@
             "mime_types": "",
             "allow_in_bindings": 0,
             "preview_size": "medium"
+        },
+        {
+            "key": "field_092e9cc1461f3",
+            "label": "Aba Benefícios",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_b7e530088572b",
+            "label": "Benefícios",
+            "name": "beneficios",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "table",
+            "pagination": 0,
+            "min": 0,
+            "max": 0,
+            "collapsed": "",
+            "button_label": "Adicionar benefício",
+            "rows_per_page": 20,
+            "allow_in_bindings": 0,
+            "sub_fields": [
+                {
+                    "key": "field_6220e63c13e43",
+                    "label": "Ícone",
+                    "name": "icone",
+                    "aria-label": "",
+                    "type": "image",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "library": "all",
+                    "min_width": "",
+                    "min_height": "",
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": "svg,png,webp",
+                    "allow_in_bindings": 0,
+                    "preview_size": "medium",
+                    "parent_repeater": "field_b7e530088572b"
+                },
+                {
+                    "key": "field_dc47b6185cec8",
+                    "label": "Texto",
+                    "name": "texto",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_b7e530088572b"
+                }
+            ]
         },
         {
             "key": "field_a29e14a8d8374",
@@ -201,5 +314,5 @@
     "display_title": "Conteúdo - Consultas",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1790623380
+    "modified": 1790951597
 }

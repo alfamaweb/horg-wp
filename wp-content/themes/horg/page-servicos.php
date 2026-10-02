@@ -12,77 +12,84 @@ get_header();
 <main id="conteudo">
 	<?php get_template_part('template-parts/breadcrumb'); ?>
 
-	<section id="sobre">
+	<section id="exames">
 		<div class="container">
 			<div class="grid grid-cols-12 gap-8">
 				<div class="col-span-12 lg:col-span-6">
 					<div class="section-title items-start">
-						<div class="eyebrow mb-3 lg:mb-4"><?php echo esc_html(get_field('sobre_eyebrow') ?: 'agendamento fácil e rápido'); ?></div>
-						<h2><?php echo esc_html(get_field('sobre_titulo') ?: 'A Horg está esperando por você!'); ?></h2>
+						<div class="eyebrow mb-3 lg:mb-4"><?php echo esc_html(get_field('exames_eyebrow') ?: 'exames e diagnósticos'); ?></div>
+						<h2><?php echo esc_html(get_field('exames_titulo') ?: 'Cuidando da Sua Visão com Precisão'); ?></h2>
 						<div class="line max-w-[200px]"></div>
 					</div>
+					<?php if ($exames_texto = get_field('exames_texto')): ?>
+						<div class="aw-prose mt-8"><?php echo wp_kses_post($exames_texto); ?></div>
+					<?php endif; ?>
 				</div>
-				<?php $sobre_imagem = get_field('sobre_imagem'); ?>
+				<?php $exames_imagem = get_field('exames_imagem'); ?>
 				<div class="col-span-12 lg:col-span-6">
 					<div class="relative isolate h-full pt-6 pr-6 lg:pt-11 lg:pr-10">
 						<div class="absolute bg-degrade right-0 top-0 w-1/2 h-2/3 rounded-[15px] -z-1" aria-hidden="true"></div>
-						<img src="<?php echo esc_url($sobre_imagem['url'] ?? 'https://placehold.co/775x398'); ?>"
-							alt="<?php echo esc_attr($sobre_imagem['alt'] ?? 'Sobre a Horg'); ?>" class="w-full h-full object-cover rounded-[15px]">
+						<img src="<?php echo esc_url($exames_imagem['url'] ?? 'https://placehold.co/775x390'); ?>"
+							alt="<?php echo esc_attr($exames_imagem['alt'] ?? 'Exames na Horg'); ?>" class="w-full h-full object-cover rounded-[15px]">
 					</div>
 				</div>
 			</div>
 		</div>
 	</section>
 
-	<section class="bg-cinza-claro py-16 lg:py-22">
-		<div class="container">
-			<div class="grid grid-cols-12 gap-8">
-				<?php if (have_rows('equipe')): ?>
-					<?php while (have_rows('equipe')): the_row();
-						$equipe_membro_titulo = get_sub_field('titulo');
-						$equipe_membro_texto  = get_sub_field('texto');
+	<?php if (have_rows('tratamentos')): ?>
+		<section class="bg-cinza-claro py-16 lg:py-22" id="tratamentos">
+			<div class="container">
+				<div class="section-title mb-10">
+					<div class="eyebrow mb-3 lg:mb-4"><?php echo esc_html(get_field('tratamentos_eyebrow') ?: 'tratamentos e intervenções'); ?></div>
+					<h2><?php echo esc_html(get_field('tratamentos_titulo') ?: 'Conheça algumas das principais opções disponíveis'); ?></h2>
+					<div class="line max-w-[300px]"></div>
+				</div>
+				<div class="grid grid-cols-12 gap-8">
+					<?php while (have_rows('tratamentos')): the_row();
+						$tratamento_icone  = get_sub_field('icone');
+						$tratamento_titulo = get_sub_field('titulo');
+						$tratamento_texto  = get_sub_field('texto');
 						?>
-						<div class="col-span-12 lg:col-span-6 2xl:col-span-3">
-							<div class="card !drop-shadow-sombra-1 px-6 py-8">
-								<div class="flex flex-col items-start gap-6 lg:gap-8">
-									<img src="<?= IMG_URI ?>bx_health.svg" alt="Medico" class="w-6 h-6">
-									<h3><?php echo esc_html($equipe_membro_titulo); ?></h3>
-									<div class="uppercase text-2xl leading-[160%]"><?php echo esc_html($equipe_membro_texto); ?></div>
+						<div class="col-span-12 md:col-span-6 2xl:col-span-3">
+							<div class="card h-full !drop-shadow-sombra-1 px-6 py-8">
+								<div class="flex flex-col items-start gap-6">
+									<img src="<?php echo esc_url($tratamento_icone['url'] ?? (IMG_URI . 'bx_health.svg')); ?>"
+										alt="<?php echo esc_attr($tratamento_icone['alt'] ?? ''); ?>" class="w-10 h-10 object-contain">
+									<h3 class="uppercase"><?php echo esc_html($tratamento_titulo); ?></h3>
+									<?php if ($tratamento_texto): ?>
+										<p class="text-cinza"><?php echo wp_kses($tratamento_texto, array('br' => array())); ?></p>
+									<?php endif; ?>
 								</div>
 							</div>
 						</div>
 					<?php endwhile; ?>
-				<?php else: ?>
-					<div class="col-span-12 lg:col-span-6 2xl:col-span-3">
-						<div class="card !drop-shadow-sombra-1 px-6 py-8">
-							<div class="flex flex-col items-start gap-6 lg:gap-8">
-								<img src="<?= IMG_URI ?>bx_health.svg" alt="Medico" class="w-6 h-6">
-								<h3>JOÃO VITOR SANTANA DANTAS</h3>
-								<div class="uppercase text-2xl leading-[160%]">MÉDICO ANESTESISTA - CRM 8362</div>
-							</div>
-						</div>
-					</div>
-				<?php endif; ?>
+				</div>
+				<?php aw_botao(get_field('tratamentos_botao'), __('Agende sua consulta', 'alfama-web'), 'btn escuro mx-auto mt-10'); ?>
 			</div>
-	</section>
+		</section>
+	<?php endif; ?>
 
-	<section id="sobre">
+	<section id="cirurgias">
 		<div class="container">
 			<div class="grid grid-cols-12 gap-8">
-				<?php $agendamento_imagem = get_field('agendamento_imagem'); ?>
+				<?php $cirurgias_imagem = get_field('cirurgias_imagem'); ?>
 				<div class="col-span-12 lg:col-span-6">
 					<div class="relative isolate h-full pt-6 pl-6 lg:pt-11 lg:pl-10">
 						<div class="absolute bg-degrade left-0 top-0 w-1/2 h-2/3 rounded-[15px] -z-1" aria-hidden="true"></div>
-						<img src="<?php echo esc_url($agendamento_imagem['url'] ?? 'https://placehold.co/775x398'); ?>"
-							alt="<?php echo esc_attr($agendamento_imagem['alt'] ?? 'Sobre a Horg'); ?>" class="w-full h-full object-cover rounded-[15px]">
+						<img src="<?php echo esc_url($cirurgias_imagem['url'] ?? 'https://placehold.co/775x390'); ?>"
+							alt="<?php echo esc_attr($cirurgias_imagem['alt'] ?? 'Cirurgias na Horg'); ?>" class="w-full h-full object-cover rounded-[15px]">
 					</div>
 				</div>
 				<div class="col-span-12 lg:col-span-6">
 					<div class="section-title items-start">
-						<div class="eyebrow mb-3 lg:mb-4"><?php echo esc_html(get_field('agendamento_eyebrow') ?: 'agendamento fácil e rápido'); ?></div>
-						<h2><?php echo esc_html(get_field('agendamento_titulo') ?: 'A Horg está esperando por você!'); ?></h2>
+						<div class="eyebrow mb-3 lg:mb-4"><?php echo esc_html(get_field('cirurgias_eyebrow') ?: 'CIRURGIAS DISPONÍVEIS'); ?></div>
+						<h2><?php echo esc_html(get_field('cirurgias_titulo') ?: 'Seu procedimento com mais segurança'); ?></h2>
 						<div class="line max-w-[200px]"></div>
 					</div>
+					<?php if ($cirurgias_texto = get_field('cirurgias_texto')): ?>
+						<div class="aw-prose mt-8"><?php echo wp_kses_post($cirurgias_texto); ?></div>
+					<?php endif; ?>
 				</div>
 			</div>
 		</div>

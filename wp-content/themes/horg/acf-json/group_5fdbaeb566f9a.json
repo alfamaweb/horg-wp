@@ -1,6 +1,6 @@
 {
     "key": "group_5fdbaeb566f9a",
-    "title": "Página Padrão - CTA",
+    "title": "Faixa CTA",
     "fields": [
         {
             "key": "field_61b320e4ea0ba",
@@ -63,6 +63,23 @@
             "append": ""
         },
         {
+            "key": "field_4511112076c7e",
+            "label": "Botão",
+            "name": "cta_botao",
+            "aria-label": "",
+            "type": "link",
+            "instructions": "Vazio usa o link de agendamento das Opções do Site.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "allow_in_bindings": 0
+        },
+        {
             "key": "field_a3ced59c2fdbf",
             "label": "Imagem",
             "name": "cta_imagem",
@@ -95,6 +112,23 @@
                 "param": "page_template",
                 "operator": "==",
                 "value": "default"
+            },
+            {
+                "param": "page",
+                "operator": "!=",
+                "value": "16"
+            },
+            {
+                "param": "page",
+                "operator": "!=",
+                "value": "3"
+            }
+        ],
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "page-home.php"
             }
         ]
     ],
@@ -109,8 +143,8 @@
     "active": true,
     "description": "",
     "show_in_rest": 1,
-    "display_title": "Conteúdo - CTA (Página Padrão)",
+    "display_title": "Conteúdo - Faixa CTA",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1790621730
+    "modified": 1790951597
 }

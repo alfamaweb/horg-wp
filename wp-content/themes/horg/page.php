@@ -40,25 +40,7 @@ get_header();
 		</div>
 	</section>
 
-	<section class="mt-40 mb-0" id="cta">
-		<div class="container">
-			<div class="holder rounded-t-[25px] bg-[#EDF5FF] max-h-86 flex items-end">
-				<div class="grid grid-cols-12 gap-8">
-					<?php $cta_imagem = get_field('cta_imagem'); ?>
-					<div class="col-span-10 col-start-2 flex justify-between items-center">
-						<img class="bottom-0" src="<?php echo esc_url($cta_imagem['url'] ?? (IMG_URI . 'Medic.png')); ?>"
-							alt="<?php echo esc_attr($cta_imagem['alt'] ?? ''); ?>">
-						<div class="section-title items-center text-center mt-auto">
-							<div class="eyebrow mb-3 lg:mb-4"><?php echo esc_html(get_field('cta_eyebrow') ?: 'agendamento fácil e rápido'); ?></div>
-							<h2><?php echo esc_html(get_field('cta_titulo') ?: 'A Horg está esperando por você!'); ?></h2>
-							<div class="line max-w-[300px]"></div>
-							<a href="#" class="btn escuro mt-10">Agende sua consulta</a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
+	<?php get_template_part('template-parts/cta-agendamento'); ?>
 </main>
 <?php
 get_footer();

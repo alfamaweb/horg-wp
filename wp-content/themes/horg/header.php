@@ -54,7 +54,7 @@ $logo_alt = $logo_id ? get_post_meta($logo_id, '_wp_attachment_image_alt', true)
 					'fallback_cb'    => false,
 				));
 				?>
-				<a href="" class="btn">Agende sua consulta</a>
+				<?php aw_botao(null, __('Agende sua consulta', 'alfama-web'), 'btn'); ?>
 			</nav>
 
 			<button type="button" class="menu-toggle lg:hidden" data-aw-menu-toggle

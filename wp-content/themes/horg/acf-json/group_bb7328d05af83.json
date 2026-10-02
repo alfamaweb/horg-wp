@@ -3,6 +3,74 @@
     "title": "Artigos (Página)",
     "fields": [
         {
+            "key": "field_6edd3a9f8f3f8",
+            "label": "Aba Destaque",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_86f5cebf4b9e4",
+            "label": "Eyebrow",
+            "name": "destaque_eyebrow",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "notícia destaque",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_916622a8de4b7",
+            "label": "Artigo em destaque",
+            "name": "destaque_post",
+            "aria-label": "",
+            "type": "post_object",
+            "instructions": "Vazio usa o artigo mais recente.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "post"
+            ],
+            "post_status": [
+                "publish"
+            ],
+            "taxonomy": "",
+            "return_format": "id",
+            "multiple": 0,
+            "allow_null": 1,
+            "allow_in_bindings": 0,
+            "bidirectional": 0,
+            "ui": 1,
+            "bidirectional_target": []
+        },
+        {
             "key": "field_02fde810d0e34",
             "label": "Aba Artigos",
             "name": "",
@@ -66,9 +134,9 @@
     "location": [
         [
             {
-                "param": "post_type",
+                "param": "page",
                 "operator": "==",
-                "value": "post"
+                "value": "16"
             }
         ]
     ],
@@ -86,5 +154,5 @@
     "display_title": "Conteúdo - Artigos",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1790621455
+    "modified": 1790951597
 }
