@@ -28,8 +28,8 @@ $artigos_query = $artigos->query();
 	<section id="artigos">
 		<div class="container">
 			<div class="section-title">
-				<div class="eyebrow mb-3 lg:mb-4">Nossos Artigos</div>
-				<h2>Fique por dentro das dicas e novidades</h2>
+				<div class="eyebrow mb-3 lg:mb-4"><?php echo esc_html(get_field('artigos_eyebrow') ?: 'Nossos Artigos'); ?></div>
+				<h2><?php echo esc_html(get_field('artigos_titulo') ?: 'Fique por dentro das dicas e novidades'); ?></h2>
 				<div class="line max-w-[200px] mb-10"></div>
 			</div>
 
