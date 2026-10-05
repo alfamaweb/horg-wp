@@ -10,7 +10,7 @@ defined('ABSPATH') || exit;
 get_header();
 ?>
 <main id="conteudo">
-	<?php get_template_part('template-parts/breadcrumb'); ?>
+	<?php get_template_part('template-parts/breadcrumb', null, array('margem' => 'mb-15')); ?>
 
 	<section class="">
 		<div class="container">
@@ -36,14 +36,17 @@ get_header();
 			<div class="grid grid-cols-12 gap-8 lg:pt-10">
 				<div class="col-span-12 lg:col-span-4 content-center">
 					<div class="section-title items-start">
-						<div class="eyebrow mb-3 lg:mb-4"><?php echo esc_html(get_field('localizacao_eyebrow') ?: 'localização'); ?></div>
+						<div class="eyebrow mb-3"><?php echo esc_html(get_field('localizacao_eyebrow') ?: 'localização'); ?></div>
 						<h2><?php echo esc_html(get_field('localizacao_titulo') ?: 'Venha nos fazer uma visita!'); ?></h2>
 						<div class="line max-w-[200px]"></div>
 					</div>
 					<?php if ($endereco): ?>
 						<div class="mt-8">
-							<div class="eyebrow text-sm mb-2"><?php esc_html_e('endereço', 'alfama-web'); ?></div>
-							<address class="not-italic text-cinza"><?php echo nl2br(esc_html($endereco)); ?></address>
+							<div class="rotulo-secao mb-4">
+								<svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 1 1 14 0C19 14.8 12 21 12 21Z" stroke="#f0607b" stroke-width="2" stroke-linejoin="round"/><circle cx="12" cy="9.5" r="2.5" stroke="#f0607b" stroke-width="2"/></svg>
+								<?php esc_html_e('endereço', 'alfama-web'); ?>
+							</div>
+							<address class="not-italic text-base"><?php echo esc_html(preg_replace('/\s*\n\s*/', ' ', $endereco)); ?></address>
 						</div>
 					<?php endif; ?>
 					<?php if ($localizacao_maps || $localizacao_waze): ?>

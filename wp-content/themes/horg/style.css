@@ -84,11 +84,16 @@ html {
 body {
   margin: 0;
   background: var(--aw-fundo);
-  color: var(--aw-tinta);
+  /* Texto corrido do Figma: Inter 16/150% em "Cinza Texto" (14/150% no mobile). */
+  color: var(--cinza, #5e5e5e);
   font-family: var(--aw-fonte);
   font-size: 16px;
-  line-height: 1.6;
+  line-height: 1.5;
   -webkit-font-smoothing: antialiased;
+
+  @media (max-width: 991.98px) {
+    font-size: 14px;
+  }
 }
 
 h1, h2, h3, h4, h5, h6 {

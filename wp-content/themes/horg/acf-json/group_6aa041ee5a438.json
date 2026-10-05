@@ -97,6 +97,28 @@
                     "parent_repeater": "field_6aa041ef33505"
                 },
                 {
+                    "key": "field_e3df04ee3f1ee",
+                    "label": "Eyebrow",
+                    "name": "eyebrow",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Texto pequeno acima do título. Ex.: CLÍNICA HORG",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_6aa041ef33505"
+                },
+                {
                     "key": "field_6aa042cc33508",
                     "label": "Título",
                     "name": "titulo",
@@ -715,6 +737,33 @@
             "rows_per_page": 20,
             "sub_fields": [
                 {
+                    "key": "field_cc4f20bf5a637",
+                    "label": "Foto",
+                    "name": "foto",
+                    "aria-label": "",
+                    "type": "image",
+                    "instructions": "Opcional. Proporção 111×88.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "library": "all",
+                    "min_width": "",
+                    "min_height": "",
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": "",
+                    "allow_in_bindings": 0,
+                    "preview_size": "thumbnail",
+                    "parent_repeater": "field_9a904b6219c9d"
+                },
+                {
                     "key": "field_f83a28b77b5df",
                     "label": "Nome",
                     "name": "titulo",
@@ -897,5 +946,5 @@
     "display_title": "Conteúdo - Home",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1790968082
+    "modified": 1790970450
 }

@@ -26,7 +26,7 @@ $cta_botao   = aw_field('cta_botao', $cta_pagina, array());
 						src="<?php echo esc_url($cta_imagem['url'] ?? (IMG_URI . 'Medic.png')); ?>"
 						alt="<?php echo esc_attr($cta_imagem['alt'] ?? ''); ?>" loading="lazy">
 					<div class="section-title items-center text-center mb-6 md:my-4 3xl:my-auto">
-						<div class="eyebrow mb-3 lg:mb-4"><?php echo esc_html($cta_eyebrow); ?></div>
+						<div class="eyebrow mb-3"><?php echo esc_html($cta_eyebrow); ?></div>
 						<h2><?php echo esc_html($cta_titulo); ?></h2>
 						<div class="line max-w-[300px]"></div>
 						<?php aw_botao($cta_botao, __('Agende sua consulta', 'alfama-web'), 'btn escuro mt-10'); ?>

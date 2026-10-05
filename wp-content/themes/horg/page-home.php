@@ -50,10 +50,13 @@ $slides = get_field('home_slides');
 								<div class="container">
 									<div class="grid grid-cols-12">
 										<div class="col-span-12 md:col-span-8 xl:col-span-6">
+											<?php if (!empty($slide['eyebrow'])): ?>
+												<div class="hero-eyebrow"><?php echo esc_html($slide['eyebrow']); ?></div>
+											<?php endif; ?>
 											<h2 class="hero-titulo"><?php echo wp_kses_post($titulo); ?></h2>
 											<div class="aw-prose-invertido"><?php echo wp_kses_post($texto); ?></div>
 											<?php if ($url): ?>
-												<a href="<?php echo esc_url($url); ?>" class="btn mt-6">
+												<a href="<?php echo esc_url($url); ?>" class="btn mt-[30px]">
 													<?= esc_html($botao); ?>
 												</a>
 											<?php endif; ?>
@@ -93,7 +96,7 @@ $slides = get_field('home_slides');
 										src="<?php echo esc_url($icone['url'] ?? ''); ?>"
 										alt="<?php echo esc_attr($icone['alt'] ?? ''); ?>">
 								</div>
-								<div class="txt text-lg md:text-xl xl:text-2xl text-white">
+								<div class="txt font-roboto text-xl leading-[1.2] xl:text-[28px] text-white">
 									<?php echo wp_kses_post($texto); ?>
 								</div>
 							</div>
@@ -138,16 +141,20 @@ $slides = get_field('home_slides');
 		<section id="servicos">
 			<div class="container">
 				<div class="section-title">
-					<div class="eyebrow mb-3 lg:mb-4"><?php echo esc_html(get_field('servicos_eyebrow') ?: 'Principais Serviços'); ?></div>
+					<div class="eyebrow mb-3"><?php echo esc_html(get_field('servicos_eyebrow') ?: 'Principais Serviços'); ?></div>
 					<h2><?php echo esc_html(get_field('servicos_titulo') ?: 'O que fazemos por você'); ?></h2>
 					<div class="line max-w-[200px]"></div>
 				</div>
-				<div class="grid grid-cols-12 gap-8">
-					<?php while ($servicos_query->have_posts()) : $servicos_query->the_post(); ?>
-						<div class="col-span-6 xl:col-span-3">
-							<?php get_template_part('template-parts/card-servico', null, array('post_id' => get_the_ID())); ?>
-						</div>
-					<?php endwhile; ?>
+				<?php // Carrossel no mobile (Figma Mobile), 4 colunas no desktop. ?>
+				<div class="swiper servicos-swiper"
+					data-aw-swiper='{"slidesPerView":1.08,"spaceBetween":20,"breakpoints":{"768":{"slidesPerView":2,"spaceBetween":30},"1200":{"slidesPerView":4,"spaceBetween":30}}}'>
+					<div class="swiper-wrapper">
+						<?php while ($servicos_query->have_posts()) : $servicos_query->the_post(); ?>
+							<div class="swiper-slide !h-auto">
+								<?php get_template_part('template-parts/card-servico', null, array('post_id' => get_the_ID())); ?>
+							</div>
+						<?php endwhile; ?>
+					</div>
 				</div>
 				<?php wp_reset_postdata(); ?>
 			</div>
@@ -158,7 +165,7 @@ $slides = get_field('home_slides');
 		<div class="container">
 			<div class="holder rounded-3xl bg-[#EDF5FF] py-8 lg:p-12">
 				<div class="section-title text-center mb-10">
-					<div class="eyebrow mb-3 lg:mb-4"><?php echo esc_html(get_field('atendimento_eyebrow') ?: 'Atendimento Personalizado'); ?></div>
+					<div class="eyebrow mb-3"><?php echo esc_html(get_field('atendimento_eyebrow') ?: 'Atendimento Personalizado'); ?></div>
 					<h2><?php echo esc_html(get_field('atendimento_titulo') ?: 'Conte com a nossa experiência'); ?></h2>
 					<div class="line max-w-[300px]"></div>
 				</div>
@@ -197,7 +204,7 @@ $slides = get_field('home_slides');
 				</div>
 				<div class="col-span-6">
 					<div class="section-title items-start max-lg:items-center max-lg:text-center">
-						<div class="eyebrow mb-3 lg:mb-4"><?php echo esc_html(get_field('welcome_eyebrow') ?: 'Bem-vindo à Horg'); ?></div>
+						<div class="eyebrow mb-3"><?php echo esc_html(get_field('welcome_eyebrow') ?: 'Bem-vindo à Horg'); ?></div>
 						<h2><?php echo esc_html(get_field('welcome_titulo') ?: 'Excelência em cuidado com a sua visão'); ?></h2>
 						<div class="line max-w-[200px] mb-8"></div>
 						<?php
@@ -235,7 +242,7 @@ $slides = get_field('home_slides');
 			<div class="flex flex-col lg:grid grid-cols-12 gap-8 pt-12">
 				<div class="col-span-6 content-center">
 					<div class="section-title max-lg:text-center lg:items-start mb-10">
-						<div class="eyebrow mb-3 lg:mb-4"><?php echo esc_html(get_field('depoimentos_eyebrow') ?: 'Depoimentos'); ?></div>
+						<div class="eyebrow mb-3"><?php echo esc_html(get_field('depoimentos_eyebrow') ?: 'Depoimentos'); ?></div>
 						<h2><?php echo esc_html(get_field('depoimentos_titulo') ?: 'O que nossos pacientes dizem'); ?></h2>
 						<div class="line max-w-[300px] mb-10"></div>
 						<?php
@@ -248,6 +255,10 @@ $slides = get_field('home_slides');
 								com carinho, atenção e aquele cuidado especial que faz toda a diferença.</p>
 						<?php endif; ?>
 					</div>
+					<div class="custom-navs flex items-center gap-5 max-lg:justify-center">
+						<button type="button" class="btn-prev depoimentos-prev bg-azul rounded-[5px] w-15 h-15"><span class="sr-only"><?php esc_html_e('Depoimento anterior', 'alfama-web'); ?></span></button>
+						<button type="button" class="btn-next depoimentos-next bg-azul rounded-[5px] w-15 h-15"><span class="sr-only"><?php esc_html_e('Próximo depoimento', 'alfama-web'); ?></span></button>
+					</div>
 				</div>
 				<div class="col-span-6 content-center">
 					<div class="swiper depoimentos-swiper !overflow-visible">
@@ -258,28 +269,33 @@ $slides = get_field('home_slides');
 									$depoimento_subtitulo = get_sub_field('subtitulo');
 									$depoimento_texto     = get_sub_field('texto');
 									$depoimento_nota      = max(0, min(5, (int) get_sub_field('nota')));
+									$depoimento_foto      = get_sub_field('foto');
 									?>
 									<div class="swiper-slide">
-										<div class="card p-6 rounded-[15px]">
-											<p class="card-resumo text-cinza"><?php echo esc_html($depoimento_texto); ?></p>
-											<div class="mt-4 flex flex-wrap items-end justify-between gap-4">
-												<div>
-													<?php if ($depoimento_subtitulo): ?>
-														<div class="text-sm text-cinza"><?php echo esc_html($depoimento_subtitulo); ?></div>
-													<?php endif; ?>
-													<div class="font-bold"><?php echo esc_html($depoimento_titulo); ?></div>
-												</div>
-												<?php if ($depoimento_nota): ?>
-													<div class="flex gap-1 text-laranja" role="img"
-														aria-label="<?php echo esc_attr(sprintf(__('Nota %d de 5', 'alfama-web'), $depoimento_nota)); ?>">
-														<?php for ($estrela = 1; $estrela <= 5; $estrela++): ?>
-															<svg class="w-5 h-5 <?php echo $estrela > $depoimento_nota ? 'opacity-25' : ''; ?>" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-																<path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6-4.9-4.6 6.6-.8z" />
-															</svg>
-														<?php endfor; ?>
-													</div>
+										<div class="card p-[30px] rounded-[20px] border-0">
+											<div class="flex items-center gap-4 mb-6">
+												<?php if (!empty($depoimento_foto['url'])): ?>
+													<img src="<?php echo esc_url($depoimento_foto['sizes']['thumbnail'] ?? $depoimento_foto['url']); ?>"
+														alt="<?php echo esc_attr($depoimento_titulo); ?>" class="w-[111px] h-[88px] rounded-[10px] object-cover shrink-0" loading="lazy">
 												<?php endif; ?>
+												<div>
+													<div class="depoimento-nome"><?php echo esc_html($depoimento_titulo); ?></div>
+													<?php if ($depoimento_subtitulo): ?>
+														<div class="depoimento-subtitulo"><?php echo esc_html($depoimento_subtitulo); ?></div>
+													<?php endif; ?>
+													<?php if ($depoimento_nota): ?>
+														<div class="flex gap-1 mt-3 text-[#ffc107]" role="img"
+															aria-label="<?php echo esc_attr(sprintf(__('Nota %d de 5', 'alfama-web'), $depoimento_nota)); ?>">
+															<?php for ($estrela = 1; $estrela <= 5; $estrela++): ?>
+																<svg class="w-[22px] h-[18px] <?php echo $estrela > $depoimento_nota ? 'opacity-25' : ''; ?>" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+																	<path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6-4.9-4.6 6.6-.8z" />
+																</svg>
+															<?php endfor; ?>
+														</div>
+													<?php endif; ?>
+												</div>
 											</div>
+											<div class="depoimento-texto"><?php echo wp_kses_post($depoimento_texto); ?></div>
 										</div>
 									</div>
 								<?php endwhile; ?>
@@ -319,16 +335,19 @@ $slides = get_field('home_slides');
 		<section id="artigos">
 			<div class="container">
 				<div class="section-title text-center">
-					<div class="eyebrow mb-3 lg:mb-4"><?php echo esc_html(get_field('artigos_eyebrow') ?: 'Artigos Publicados'); ?></div>
+					<div class="eyebrow mb-3"><?php echo esc_html(get_field('artigos_eyebrow') ?: 'Artigos Publicados'); ?></div>
 					<h2><?php echo esc_html(get_field('artigos_titulo') ?: 'Aprendizados e curiosidades oftalmológicas'); ?></h2>
 					<div class="line max-w-[200px]"></div>
 				</div>
-				<div class="grid grid-cols-12 gap-8">
-					<?php while ($artigos_query->have_posts()) : $artigos_query->the_post(); ?>
-						<div class="col-span-12 md:col-span-6 lg:col-span-4">
-							<?php get_template_part('template-parts/card-artigo', null, array('post_id' => get_the_ID())); ?>
-						</div>
-					<?php endwhile; ?>
+				<div class="swiper artigos-swiper"
+					data-aw-swiper='{"slidesPerView":1.08,"spaceBetween":20,"breakpoints":{"768":{"slidesPerView":2,"spaceBetween":30},"992":{"slidesPerView":3,"spaceBetween":31}}}'>
+					<div class="swiper-wrapper">
+						<?php while ($artigos_query->have_posts()) : $artigos_query->the_post(); ?>
+							<div class="swiper-slide !h-auto">
+								<?php get_template_part('template-parts/card-artigo', null, array('post_id' => get_the_ID())); ?>
+							</div>
+						<?php endwhile; ?>
+					</div>
 				</div>
 				<?php wp_reset_postdata(); ?>
 				<?php $pagina_artigos = get_page_by_path('artigos'); ?>
@@ -350,8 +369,15 @@ get_footer();
 			autoplay: {
 				delay: 6000,
 			},
-			slidesPerView: 2,
-			spaceBetween: 50,
+			slidesPerView: 1,
+			spaceBetween: 20,
+			navigation: {
+				prevEl: '.depoimentos-prev',
+				nextEl: '.depoimentos-next',
+			},
+			breakpoints: {
+				992: { slidesPerView: 2, spaceBetween: 53 },
+			},
 		});
 
 	});

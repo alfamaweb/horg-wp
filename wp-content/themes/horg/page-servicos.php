@@ -15,18 +15,18 @@ get_header();
 	<section id="exames">
 		<div class="container">
 			<div class="grid grid-cols-12 gap-8">
-				<div class="col-span-12 lg:col-span-6">
+				<div class="col-span-12 lg:col-span-6 lg:flex lg:flex-col lg:justify-center">
 					<div class="section-title items-start">
-						<div class="eyebrow mb-3 lg:mb-4"><?php echo esc_html(get_field('exames_eyebrow') ?: 'exames e diagnósticos'); ?></div>
+						<div class="eyebrow mb-3"><?php echo esc_html(get_field('exames_eyebrow') ?: 'exames e diagnósticos'); ?></div>
 						<h2><?php echo esc_html(get_field('exames_titulo') ?: 'Cuidando da Sua Visão com Precisão'); ?></h2>
 						<div class="line max-w-[200px]"></div>
 					</div>
 					<?php if ($exames_texto = get_field('exames_texto')): ?>
-						<div class="aw-prose mt-8"><?php echo wp_kses_post($exames_texto); ?></div>
+						<div class="aw-prose"><?php echo wp_kses_post($exames_texto); ?></div>
 					<?php endif; ?>
 				</div>
 				<?php $exames_imagem = get_field('exames_imagem'); ?>
-				<div class="col-span-12 lg:col-span-6">
+				<div class="col-span-12 lg:col-span-6 max-lg:order-first">
 					<div class="relative isolate h-full pt-6 pr-6 lg:pt-11 lg:pr-10">
 						<div class="absolute bg-degrade right-0 top-0 w-1/2 h-2/3 rounded-[15px] -z-1" aria-hidden="true"></div>
 						<img src="<?php echo esc_url($exames_imagem['url'] ?? 'https://placehold.co/775x390'); ?>"
@@ -34,14 +34,22 @@ get_header();
 					</div>
 				</div>
 			</div>
+			<?php if ($exames_lista = get_field('exames_lista')): ?>
+				<div class="lista-destaque mt-[45px]">
+					<span class="lista-destaque-icone" aria-hidden="true">
+						<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h6M9 9h2"/></svg>
+					</span>
+					<p class="lista-destaque-texto"><?php echo esc_html($exames_lista); ?></p>
+				</div>
+			<?php endif; ?>
 		</div>
 	</section>
 
 	<?php if (have_rows('tratamentos')): ?>
-		<section class="bg-cinza-claro py-16 lg:py-22" id="tratamentos">
+		<section class="bg-cinza-claro py-12 lg:py-[55px]" id="tratamentos">
 			<div class="container">
 				<div class="section-title mb-10">
-					<div class="eyebrow mb-3 lg:mb-4"><?php echo esc_html(get_field('tratamentos_eyebrow') ?: 'tratamentos e intervenções'); ?></div>
+					<div class="eyebrow mb-3"><?php echo esc_html(get_field('tratamentos_eyebrow') ?: 'tratamentos e intervenções'); ?></div>
 					<h2><?php echo esc_html(get_field('tratamentos_titulo') ?: 'Conheça algumas das principais opções disponíveis'); ?></h2>
 					<div class="line max-w-[300px]"></div>
 				</div>
@@ -52,13 +60,13 @@ get_header();
 						$tratamento_texto  = get_sub_field('texto');
 						?>
 						<div class="col-span-12 md:col-span-6 2xl:col-span-3">
-							<div class="card h-full !drop-shadow-sombra-1 px-6 py-8">
+							<div class="card card-tratamento h-full !drop-shadow-sombra-1 border-0 rounded-[10px] px-[33px] py-[40px]">
 								<div class="flex flex-col items-start gap-6">
 									<img src="<?php echo esc_url($tratamento_icone['url'] ?? (IMG_URI . 'bx_health.svg')); ?>"
 										alt="<?php echo esc_attr($tratamento_icone['alt'] ?? ''); ?>" class="w-10 h-10 object-contain">
 									<h3 class="uppercase"><?php echo esc_html($tratamento_titulo); ?></h3>
 									<?php if ($tratamento_texto): ?>
-										<p class="text-cinza"><?php echo wp_kses($tratamento_texto, array('br' => array())); ?></p>
+										<p class="mt-6"><?php echo wp_kses($tratamento_texto, array('br' => array())); ?></p>
 									<?php endif; ?>
 								</div>
 							</div>
@@ -81,17 +89,25 @@ get_header();
 							alt="<?php echo esc_attr($cirurgias_imagem['alt'] ?? 'Cirurgias na Horg'); ?>" class="w-full h-full object-cover rounded-[15px]">
 					</div>
 				</div>
-				<div class="col-span-12 lg:col-span-6">
+				<div class="col-span-12 lg:col-span-6 lg:flex lg:flex-col lg:justify-center">
 					<div class="section-title items-start">
-						<div class="eyebrow mb-3 lg:mb-4"><?php echo esc_html(get_field('cirurgias_eyebrow') ?: 'CIRURGIAS DISPONÍVEIS'); ?></div>
+						<div class="eyebrow mb-3"><?php echo esc_html(get_field('cirurgias_eyebrow') ?: 'CIRURGIAS DISPONÍVEIS'); ?></div>
 						<h2><?php echo esc_html(get_field('cirurgias_titulo') ?: 'Seu procedimento com mais segurança'); ?></h2>
 						<div class="line max-w-[200px]"></div>
 					</div>
 					<?php if ($cirurgias_texto = get_field('cirurgias_texto')): ?>
-						<div class="aw-prose mt-8"><?php echo wp_kses_post($cirurgias_texto); ?></div>
+						<div class="aw-prose"><?php echo wp_kses_post($cirurgias_texto); ?></div>
 					<?php endif; ?>
 				</div>
 			</div>
+			<?php if ($cirurgias_lista = get_field('cirurgias_lista')): ?>
+				<div class="lista-destaque mt-[45px]">
+					<span class="lista-destaque-icone" aria-hidden="true">
+						<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h6M9 9h2"/></svg>
+					</span>
+					<p class="lista-destaque-texto"><?php echo esc_html($cirurgias_lista); ?></p>
+				</div>
+			<?php endif; ?>
 		</div>
 	</section>
 
@@ -99,7 +115,7 @@ get_header();
 		<div class="container">
 			<div class="flex flex-row justify-between items-end mb-11">
 				<div class="section-title items-start text-start mb-0">
-					<div class="eyebrow mb-3 lg:mb-4"><?php echo esc_html(get_field('convenios_eyebrow') ?: 'Convênios Médicos'); ?></div>
+					<div class="eyebrow mb-3"><?php echo esc_html(get_field('convenios_eyebrow') ?: 'Convênios Médicos'); ?></div>
 					<h2><?php echo esc_html(get_field('convenios_titulo') ?: 'Convênios médicos e planos de saúde aceitos na HORG'); ?></h2>
 					<div class="line max-w-[200px]"></div>
 				</div>

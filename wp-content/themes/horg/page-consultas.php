@@ -23,14 +23,14 @@ get_header();
 							alt="<?php echo esc_attr($consultas_imagem['alt'] ?? 'Consultas na Horg'); ?>" class="w-full h-full object-cover rounded-[15px]">
 					</div>
 				</div>
-				<div class="col-span-12 lg:col-span-6">
+				<div class="col-span-12 lg:col-span-6 lg:flex lg:flex-col lg:justify-center">
 					<div class="section-title items-start">
-						<div class="eyebrow mb-3 lg:mb-4"><?php echo esc_html(get_field('consultas_eyebrow') ?: 'consultas e atendimentos'); ?></div>
+						<div class="eyebrow mb-3"><?php echo esc_html(get_field('consultas_eyebrow') ?: 'consultas e atendimentos'); ?></div>
 						<h2><?php echo esc_html(get_field('consultas_titulo') ?: 'Prevenção e cuidados para a saúde ocular'); ?></h2>
 						<div class="line max-w-[200px]"></div>
 					</div>
 					<?php if ($consultas_texto = get_field('consultas_texto')): ?>
-						<div class="aw-prose mt-8"><?php echo wp_kses_post($consultas_texto); ?></div>
+						<div class="aw-prose"><?php echo wp_kses_post($consultas_texto); ?></div>
 					<?php endif; ?>
 				</div>
 			</div>
@@ -53,7 +53,7 @@ get_header();
 											alt="<?php echo esc_attr($beneficio_icone['alt'] ?? ''); ?>">
 									</div>
 								<?php endif; ?>
-								<h4 class="text-white"><?php echo esc_html($beneficio_texto); ?></h4>
+								<h4 class="text-white font-roboto text-base leading-[1.6] lg:text-2xl lg:leading-[1.2]"><?php echo esc_html($beneficio_texto); ?></h4>
 							</div>
 						</div>
 					<?php endwhile; ?>
@@ -66,7 +66,7 @@ get_header();
 		<div class="container">
 			<div class="flex flex-row justify-between items-end mb-11">
 				<div class="section-title items-start text-start mb-0">
-					<div class="eyebrow mb-3 lg:mb-4"><?php echo esc_html(get_field('convenios_eyebrow') ?: 'Convênios Médicos'); ?></div>
+					<div class="eyebrow mb-3"><?php echo esc_html(get_field('convenios_eyebrow') ?: 'Convênios Médicos'); ?></div>
 					<h2><?php echo esc_html(get_field('convenios_titulo') ?: 'Convênios médicos e planos de saúde aceitos na HORG'); ?></h2>
 					<div class="line max-w-[200px]"></div>
 				</div>

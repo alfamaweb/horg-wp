@@ -110,6 +110,27 @@
             "preview_size": "medium"
         },
         {
+            "key": "field_e3b681a13f4af",
+            "label": "Lista (faixa com ícone)",
+            "name": "exames_lista",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Itens separados por vírgula. Aparece em largura total abaixo do texto e da imagem.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
             "key": "field_a2ba784111cb8",
             "label": "Aba Tratamentos",
             "name": "",
@@ -389,6 +410,27 @@
             "preview_size": "medium"
         },
         {
+            "key": "field_2e5b1ebd30a45",
+            "label": "Lista (faixa com ícone)",
+            "name": "cirurgias_lista",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Itens separados por vírgula. Aparece em largura total abaixo do texto e da imagem.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
             "key": "field_fc5e9eee6cc4c",
             "label": "Aba Convênios",
             "name": "",
@@ -501,5 +543,5 @@
     "display_title": "Conteúdo - Serviços",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1790968082
+    "modified": 1790970450
 }

@@ -44,11 +44,11 @@ $artigos_query = $artigos->query();
 				<div class="grid grid-cols-12 gap-8">
 					<div class="col-span-12 lg:col-span-6 content-center">
 						<div class="section-title items-start">
-							<div class="eyebrow mb-3 lg:mb-4"><?php echo esc_html(get_field('destaque_eyebrow') ?: 'notícia destaque'); ?></div>
+							<div class="eyebrow mb-3"><?php echo esc_html(get_field('destaque_eyebrow') ?: 'notícia destaque'); ?></div>
 							<h2><?php echo esc_html(get_the_title($destaque_id)); ?></h2>
 							<div class="line max-w-[200px]"></div>
 						</div>
-						<p class="mt-8 text-cinza"><?php echo esc_html(aw_resumo($destaque_id, 320)); ?></p>
+						<p><?php echo esc_html(aw_resumo($destaque_id, 320)); ?></p>
 						<a href="<?php echo esc_url(get_permalink($destaque_id)); ?>" class="btn escuro mt-10">
 							<?php esc_html_e('Ler artigo completo', 'alfama-web'); ?>
 						</a>
@@ -68,7 +68,7 @@ $artigos_query = $artigos->query();
 	<section id="artigos">
 		<div class="container">
 			<div class="section-title">
-				<div class="eyebrow mb-3 lg:mb-4"><?php echo esc_html(get_field('artigos_eyebrow') ?: 'Nossos Artigos'); ?></div>
+				<div class="eyebrow mb-3"><?php echo esc_html(get_field('artigos_eyebrow') ?: 'Nossos Artigos'); ?></div>
 				<h2><?php echo esc_html(get_field('artigos_titulo') ?: 'Fique por dentro das dicas e novidades'); ?></h2>
 				<div class="line max-w-[200px] mb-10"></div>
 			</div>

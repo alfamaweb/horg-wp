@@ -32,7 +32,7 @@ $logo_alt = $logo_id ? get_post_meta($logo_id, '_wp_attachment_image_alt', true)
 
 <header class="site-header bg-azul" id="topo">
 	<div class="container">
-		<div class="flex items-center justify-between gap-6 py-4">
+		<div class="flex items-center justify-between gap-6 py-3">
 
 			<a href="<?php echo esc_url(home_url('/')); ?>" class="navbar-brand shrink-0" rel="home">
 				<?php if ($logo_url) : ?>
@@ -44,12 +44,12 @@ $logo_alt = $logo_id ? get_post_meta($logo_id, '_wp_attachment_image_alt', true)
 				<?php endif; ?>
 			</a>
 
-			<nav class="hidden lg:flex gap-8" aria-label="<?php esc_attr_e('Menu principal', 'alfama-web'); ?>">
+			<nav class="hidden lg:flex items-center gap-10" aria-label="<?php esc_attr_e('Menu principal', 'alfama-web'); ?>">
 				<?php
 				wp_nav_menu(array(
 					'theme_location' => 'primary',
 					'container'      => false,
-					'menu_class'     => 'nav-menu flex items-center text-white gap-8',
+					'menu_class'     => 'nav-menu flex items-center text-white gap-10',
 					'depth'          => 2,
 					'fallback_cb'    => false,
 				));

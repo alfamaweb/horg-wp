@@ -13,10 +13,11 @@ defined('ABSPATH') || exit;
 
 $args = wp_parse_args($args ?? array(), array(
 	'titulo' => get_the_title(),
+	'margem' => is_single() ? '' : 'mb-23',
 ));
 ?>
-<section class="<?= is_single() ? '' : 'mb-23' ?>">
-	<div class="bg-cinza-claro py-4">
+<section class="<?php echo esc_attr($args['margem']); ?>">
+	<div class="bg-cinza-claro py-5">
 		<div class="container">
 			<nav class="aw-breadcrumb" aria-label="<?php esc_attr_e('Você está aqui', 'alfama-web'); ?>">
 				<a class="font-semibold"

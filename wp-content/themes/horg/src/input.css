@@ -46,6 +46,7 @@
 
   --radius-aw: var(--aw-raio);
   --font-sans: var(--aw-fonte);
+  --font-roboto: "Roboto", var(--aw-fonte);
 }
 
 /* @utility, não @layer components: o .container nativo do Tailwind vive em
@@ -77,7 +78,9 @@
     max-width: 1320px;
   }
 
+  /* Figma desktop (1920): conteúdo de 1660px entre x130 e x1790, então o
+     max-width soma o padding lateral (2 × 24px). */
   @media (width >= theme(--breakpoint-3xl)) {
-    max-width: 1660px;
+    max-width: 1708px;
   }
 }

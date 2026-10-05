@@ -150,6 +150,33 @@
             "rows_per_page": 20,
             "sub_fields": [
                 {
+                    "key": "field_770cdcc4121da",
+                    "label": "Ícone",
+                    "name": "icone",
+                    "aria-label": "",
+                    "type": "image",
+                    "instructions": "SVG ou PNG, 60×60.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "library": "all",
+                    "min_width": "",
+                    "min_height": "",
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": "svg,png,webp",
+                    "allow_in_bindings": 0,
+                    "preview_size": "thumbnail",
+                    "parent_repeater": "field_69350201403c3"
+                },
+                {
                     "key": "field_b5d7802fcf385",
                     "label": "Título",
                     "name": "titulo",
@@ -454,5 +481,5 @@
     "display_title": "Conteúdo - Sobre",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1790968082
+    "modified": 1790971009
 }

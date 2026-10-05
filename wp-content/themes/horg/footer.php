@@ -57,7 +57,7 @@ $links_rapidos = array(
 			</div>
 
 			<div class="text-center lg:col-span-3 lg:text-left">
-				<h3 class="inline-flex items-center text-[15px] font-medium uppercase tracking-wide">
+				<h3 class="inline-flex items-center uppercase">
 					<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 						<path fill-rule="evenodd" clip-rule="evenodd"
 							d="M12 2C14.3869 2 16.6761 2.94821 18.364 4.63604C20.0518 6.32387 21 8.61305 21 11C21 14.074 19.324 16.59 17.558 18.395C16.6757 19.2871 15.7129 20.0958 14.682 20.811L14.256 21.101L14.056 21.234L13.679 21.474L13.343 21.679L12.927 21.921C12.6446 22.0822 12.3251 22.1669 12 22.1669C11.6749 22.1669 11.3554 22.0822 11.073 21.921L10.657 21.679L10.137 21.359L9.945 21.234L9.535 20.961C8.42283 20.2085 7.3869 19.3491 6.442 18.395C4.676 16.589 3 14.074 3 11C3 8.61305 3.94821 6.32387 5.63604 4.63604C7.32387 2.94821 9.61305 2 12 2ZM12 4C10.1435 4 8.36301 4.7375 7.05025 6.05025C5.7375 7.36301 5 9.14348 5 11C5 13.322 6.272 15.36 7.871 16.996C8.55853 17.692 9.30166 18.3308 10.093 18.906L10.551 19.232C10.699 19.3353 10.8413 19.4313 10.978 19.52L11.368 19.77L11.711 19.979L12 20.148L12.455 19.879L12.822 19.649C13.0173 19.525 13.2263 19.386 13.449 19.232L13.907 18.906C14.6983 18.3308 15.4415 17.692 16.129 16.996C17.728 15.361 19 13.322 19 11C19 9.14348 18.2625 7.36301 16.9497 6.05025C15.637 4.7375 13.8565 4 12 4ZM12 7C13.0609 7 14.0783 7.42143 14.8284 8.17157C15.5786 8.92172 16 9.93913 16 11C16 12.0609 15.5786 13.0783 14.8284 13.8284C14.0783 14.5786 13.0609 15 12 15C10.9391 15 9.92172 14.5786 9.17157 13.8284C8.42143 13.0783 8 12.0609 8 11C8 9.93913 8.42143 8.92172 9.17157 8.17157C9.92172 7.42143 10.9391 7 12 7ZM12 9C11.4696 9 10.9609 9.21071 10.5858 9.58579C10.2107 9.96086 10 10.4696 10 11C10 11.5304 10.2107 12.0391 10.5858 12.4142C10.9609 12.7893 11.4696 13 12 13C12.5304 13 13.0391 12.7893 13.4142 12.4142C13.7893 12.0391 14 11.5304 14 11C14 10.4696 13.7893 9.96086 13.4142 9.58579C13.0391 9.21071 12.5304 9 12 9Z"
@@ -66,11 +66,11 @@ $links_rapidos = array(
 					&nbsp;
 					ENDEREÇO
 				</h3>
-				<p class="mt-8 max-w-xs text-md"><?php echo nl2br(esc_html($endereco)); ?>
+				<p class="footer-texto mt-[18px] max-w-xs max-lg:mx-auto"><?php echo nl2br(esc_html($endereco)); ?>
 				</p>
 			</div>
 			<div class="text-center lg:col-span-3 lg:text-left">
-				<h3 class="inline-flex items-center text-[15px] font-medium uppercase tracking-wide">
+				<h3 class="inline-flex items-center uppercase">
 					<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 						<path
 							d="M16.052 1.78711L17.018 2.04811C18.1994 2.36779 19.2763 2.99161 20.1413 3.85735C21.0064 4.72309 21.6293 5.80049 21.948 6.98211L22.208 7.94711L20.278 8.46811L20.017 7.50311C19.7893 6.65908 19.3442 5.88952 18.7262 5.27118C18.1082 4.65284 17.3389 4.20734 16.495 3.97911L15.53 3.71711L16.052 1.78711ZM1.00003 2.00011H9.58003L11.067 8.69011L9.20703 10.5501C10.3007 12.2521 11.7477 13.6989 13.45 14.7921L15.31 12.9331L22 14.4201V23.0001H21C17.1504 23.0067 13.3814 21.8965 10.15 19.8041C7.76725 18.2621 5.73807 16.2329 4.19603 13.8501C2.10365 10.6187 0.993465 6.84978 1.00003 3.00011V2.00011ZM3.02703 4.00011C3.19554 7.12002 4.17776 10.1415 5.87603 12.7641C7.26435 14.9091 9.09107 16.7358 11.236 18.1241C13.8586 19.8224 16.8801 20.8046 20 20.9731V16.0241L15.947 15.1241L13.773 17.2991L13.11 16.9221C10.5927 15.4916 8.50857 13.4075 7.07803 10.8901L6.70103 10.2271L8.87603 8.05311L7.97603 4.00011H3.02703ZM15.138 5.16511L16.104 5.42611C16.6947 5.58595 17.2332 5.89786 17.6657 6.33073C18.0982 6.7636 18.4097 7.3023 18.569 7.89311L18.829 8.85811L16.899 9.37911L16.638 8.41411C16.5696 8.16089 16.436 7.93003 16.2506 7.74456C16.0651 7.55909 15.8342 7.4255 15.581 7.35711L14.616 7.09611L15.138 5.16511Z"
@@ -79,7 +79,7 @@ $links_rapidos = array(
 					&nbsp;
 					TELEFONES
 				</h3>
-				<p class="mt-8 max-w-xs text-md">
+				<p class="footer-texto mt-[18px] max-w-xs max-lg:mx-auto">
 					<?php if ($telefone): ?>
 						<?php esc_html_e('Atendimento:', 'alfama-web'); ?> <?php echo esc_html($telefone); ?><br>
 					<?php endif; ?>
@@ -89,7 +89,7 @@ $links_rapidos = array(
 				</p>
 			</div>
 			<div class="text-center lg:col-span-3 lg:text-left">
-				<h3 class="inline-flex items-center text-[15px] font-medium uppercase tracking-wide">
+				<h3 class="inline-flex items-center uppercase">
 					<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 						<g clip-path="url(#clip0_191_463)">
 							<path fill-rule="evenodd" clip-rule="evenodd"
@@ -105,7 +105,7 @@ $links_rapidos = array(
 					&nbsp;
 					LINKS RÁPIDOS
 				</h3>
-				<div class="flex flex-wrap justify-between gap-6 gap-y-3 max-w-3/4 mt-8">
+				<div class="footer-links flex flex-wrap justify-between gap-x-6 max-w-3/4 mt-[18px] max-lg:mx-auto max-lg:justify-center">
 					<?php foreach ($links_rapidos as $slug_link => $rotulo_link):
 						$pagina_link = get_page_by_path($slug_link); ?>
 						<a class="flex-[1_1_auto] underline" href="<?php echo esc_url($pagina_link ? get_permalink($pagina_link) : home_url('/' . $slug_link . '/')); ?>"><?php echo esc_html($rotulo_link); ?></a>

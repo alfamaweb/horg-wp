@@ -15,18 +15,18 @@ get_header();
 	<section id="sobre">
 		<div class="container">
 			<div class="grid grid-cols-12 gap-8">
-				<div class="col-span-12 lg:col-span-6">
+				<div class="col-span-12 lg:col-span-6 lg:flex lg:flex-col lg:justify-center">
 					<div class="section-title items-start">
-						<div class="eyebrow mb-3 lg:mb-4"><?php echo esc_html(get_field('sobre_eyebrow') ?: 'sobre nós'); ?></div>
+						<div class="eyebrow mb-3"><?php echo esc_html(get_field('sobre_eyebrow') ?: 'sobre nós'); ?></div>
 						<h2><?php echo esc_html(get_field('sobre_titulo') ?: 'O Hospital de Olhos Rollemberg Gois'); ?></h2>
 						<div class="line max-w-[200px]"></div>
 					</div>
 					<?php if ($sobre_texto = get_field('sobre_texto')): ?>
-						<div class="aw-prose mt-8"><?php echo wp_kses_post($sobre_texto); ?></div>
+						<div class="aw-prose"><?php echo wp_kses_post($sobre_texto); ?></div>
 					<?php endif; ?>
 				</div>
 				<?php $sobre_imagem = get_field('sobre_imagem'); ?>
-				<div class="col-span-12 lg:col-span-6">
+				<div class="col-span-12 lg:col-span-6 max-lg:order-first">
 					<div class="relative isolate h-full pl-6 lg:pl-10">
 						<div class="absolute bg-degrade left-0 top-[18%] w-[35%] h-[64%] rounded-l-[20px] -z-1" aria-hidden="true"></div>
 						<img src="<?php echo esc_url($sobre_imagem['url'] ?? 'https://placehold.co/775x398'); ?>"
@@ -37,21 +37,25 @@ get_header();
 		</div>
 	</section>
 
-	<section class="bg-cinza-claro py-16 lg:py-22">
+	<section class="bg-cinza-claro py-12 lg:py-[75px]" id="mvv">
 		<div class="container">
 			<div class="grid grid-cols-12 gap-8">
 				<?php if (have_rows('mvv')): ?>
 					<?php while (have_rows('mvv')): the_row();
 						$mvv_titulo = get_sub_field('titulo');
 						$mvv_texto  = get_sub_field('texto');
+						$mvv_icone  = get_sub_field('icone');
 						?>
 						<div class="col-span-12 lg:col-span-4">
-							<div class="card !drop-shadow-sombra-1 px-6 py-8">
-								<div class="section-title items-center text-center">
+							<div class="card !drop-shadow-sombra-1 border-0 rounded-[15px] px-[23px] py-[34px]">
+								<div class="section-title items-center text-center mb-0">
+									<?php if (!empty($mvv_icone['url'])): ?>
+										<img src="<?php echo esc_url($mvv_icone['url']); ?>" alt="" class="w-[60px] h-[60px] mb-[30px]" aria-hidden="true">
+									<?php endif; ?>
 									<h3><?php echo esc_html($mvv_titulo); ?></h3>
 									<div class="line max-w-[200px]"></div>
 									<?php if ($mvv_texto): ?>
-										<?php echo wp_kses_post($mvv_texto); ?>
+										<div class="mvv-texto mt-[30px]"><?php echo wp_kses_post(wpautop($mvv_texto)); ?></div>
 									<?php endif; ?>
 								</div>
 							</div>
@@ -90,7 +94,7 @@ get_header();
 		<div class="container">
 			<div class="flex flex-row justify-between items-end mb-11">
 				<div class="section-title items-start text-start mb-0">
-					<div class="eyebrow mb-3 lg:mb-4"><?php echo esc_html(get_field('equipe_eyebrow') ?: 'Nossa equipe'); ?></div>
+					<div class="eyebrow mb-3"><?php echo esc_html(get_field('equipe_eyebrow') ?: 'Nossa equipe'); ?></div>
 					<h2><?php echo esc_html(get_field('equipe_titulo') ?: 'Profissionais que cuidam de você'); ?></h2>
 					<div class="line max-w-[200px]"></div>
 				</div>
@@ -108,22 +112,22 @@ get_header();
 							$equipe_membro_texto  = get_sub_field('texto');
 							?>
 							<div class="swiper-slide">
-								<div class="card p-8 rounded-[10px] bg-azul text-white">
+								<div class="card card-equipe p-8 rounded-[10px] bg-azul text-white border-0">
 									<div class="flex flex-col items-start gap-6 lg:gap-8">
 										<img src="<?= IMG_URI ?>bx_health.svg" alt="Medico" class="w-6 h-6">
 										<h3><?php echo esc_html($equipe_membro_titulo); ?></h3>
-										<div class="uppercase text-2xl leading-[160%]"><?php echo esc_html($equipe_membro_texto); ?></div>
+										<div class="card-equipe-cargo uppercase"><?php echo esc_html($equipe_membro_texto); ?></div>
 									</div>
 								</div>
 							</div>
 						<?php endwhile; ?>
 					<?php else: ?>
 						<div class="swiper-slide">
-							<div class="card p-8 rounded-[10px] bg-azul text-white">
+							<div class="card card-equipe p-8 rounded-[10px] bg-azul text-white border-0">
 								<div class="flex flex-col items-start gap-6 lg:gap-8">
 									<img src="<?= IMG_URI ?>bx_health.svg" alt="Medico" class="w-6 h-6">
 									<h3>JOÃO VITOR SANTANA DANTAS</h3>
-									<div class="uppercase text-2xl leading-[160%]">MÉDICO ANESTESISTA - CRM 8362</div>
+									<div class="card-equipe-cargo uppercase">MÉDICO ANESTESISTA - CRM 8362</div>
 								</div>
 							</div>
 						</div>
@@ -144,14 +148,14 @@ get_header();
 							alt="<?php echo esc_attr($equipamentos_imagem['alt'] ?? 'Equipamentos da Horg'); ?>" class="w-full h-full object-cover rounded-[15px]">
 					</div>
 				</div>
-				<div class="col-span-12 lg:col-span-6">
+				<div class="col-span-12 lg:col-span-6 lg:flex lg:flex-col lg:justify-center">
 					<div class="section-title items-start">
-						<div class="eyebrow mb-3 lg:mb-4"><?php echo esc_html(get_field('equipamentos_eyebrow') ?: 'Equipamentos e tecnologia'); ?></div>
+						<div class="eyebrow mb-3"><?php echo esc_html(get_field('equipamentos_eyebrow') ?: 'Equipamentos e tecnologia'); ?></div>
 						<h2><?php echo esc_html(get_field('equipamentos_titulo') ?: 'Referência em Oftalmologia'); ?></h2>
 						<div class="line max-w-[200px]"></div>
 					</div>
 					<?php if ($equipamentos_texto = get_field('equipamentos_texto')): ?>
-						<div class="aw-prose mt-8"><?php echo wp_kses_post($equipamentos_texto); ?></div>
+						<div class="aw-prose"><?php echo wp_kses_post($equipamentos_texto); ?></div>
 					<?php endif; ?>
 				</div>
 			</div>

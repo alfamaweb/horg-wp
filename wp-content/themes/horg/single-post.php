@@ -63,7 +63,7 @@ while (have_posts()) :
 			<section id="outros-artigos">
 				<div class="container">
 					<div class="section-title items-start text-start mb-10">
-						<div class="eyebrow mb-3 lg:mb-4"><?php esc_html_e('outros artigos', 'alfama-web'); ?></div>
+						<div class="eyebrow mb-3"><?php esc_html_e('outros artigos', 'alfama-web'); ?></div>
 						<h2><?php esc_html_e('Notícias relacionadas que você pode gostar', 'alfama-web'); ?></h2>
 						<div class="line max-w-[200px]"></div>
 					</div>
